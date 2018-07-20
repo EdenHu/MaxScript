@@ -61,7 +61,21 @@ tooltip:" ExportAnim"
 						FBXExporterSetParam "UseSceneName"  true
 						loadMaxFile f --useFileUnits:true quiet:false
 						allbips = getallbips()
+						temparray =#()
 						select allBips
+						for i = 1 to 25 do
+						(
+						  for j = 1 to $selection.count do
+						 (
+							append temparray ($selection[j])
+						 )
+					     max select child
+						)
+											
+						for i = 1 to temparray.count do
+						(
+							selectmore temparray[i]
+						)
 						fileName=getFilenameFile f
 						exportFile  (newPath+@"\"+fileName+".fbx") #noPrompt selectedOnly:true using:FBXEXP
 					)
